@@ -3,7 +3,6 @@ import { Menu, Package2 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "../button";
 import { LoginRegisterButton } from "./login-register-buttons";
-import { UserProfileButton } from "./user-profile-button";
 
 export function MainNavBar() {
   return (
@@ -85,7 +84,6 @@ export function MainNavBar() {
 
         <div className="flex w-full justify-end">
           <LoginRegisterButton />
-          <UserProfileButton />
         </div>
       </div>
     </nav>
