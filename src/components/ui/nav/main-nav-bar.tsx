@@ -30,8 +30,18 @@ export function MainNavBar({ signedIn }: { signedIn: boolean }) {
               href="/protected"
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
-              Protected
+              Dashboard
             </Link>
+            {signedIn && (
+              <Link href="/protected/products" className={linkInactive}>
+                Products
+              </Link>
+            )}
+            {signedIn && (
+              <Link href="/protected/ingredients" className={linkInactive}>
+                Ingredients
+              </Link>
+            )}
             {signedIn && (
               <Link href="/protected/chatbot" className={linkInactive}>
                 Chatbot
