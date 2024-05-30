@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import { LoginButton } from "@/components/ui/auth/login-button";
 import { RegisterButton } from "@/components/ui/auth/register-button";
 import { Button } from "@/components/ui/button";
@@ -5,9 +6,11 @@ import { Card } from "@/components/ui/card";
 import { MainNavBar } from "@/components/ui/nav/main-nav-bar";
 
 export default async function Home() {
+  const session = await auth();
+
   return (
     <main className="flex min-h-screen flex-col">
-      <MainNavBar />
+      <MainNavBar signedIn={!!session} />
     </main>
   );
 }

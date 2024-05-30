@@ -3,8 +3,14 @@ import { Menu, Package2 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "../button";
 import { LoginRegisterButton } from "./login-register-buttons";
+import SignOutButton from "../auth/sign-out-button";
+import { UserProfileButton } from "./user-profile-button";
 
-export function MainNavBar() {
+export function MainNavBar({ signedIn }: { signedIn: boolean }) {
+  const linkActive = "text-foreground transition-colors hover:text-foreground";
+  const linkInactive =
+    "text-muted-foreground transition-colors hover:text-foreground";
+
   return (
     <nav className="w-full sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
       <div className="flex w-full justify-between">
@@ -17,18 +23,20 @@ export function MainNavBar() {
               <Package2 className="h-6 w-6" />
               <span className="sr-only">Lifehack 2024</span>
             </Link>
-            <Link
-              href="#"
-              className="text-foreground transition-colors hover:text-foreground"
-            >
+            <Link href="/" className={linkActive}>
               Home
             </Link>
             <Link
-              href="#"
+              href="/protected"
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
-              Other
+              Protected
             </Link>
+            {signedIn && (
+              <Link href="/protected/chatbot" className={linkInactive}>
+                Chatbot
+              </Link>
+            )}
           </div>
           <Sheet>
             <SheetTrigger asChild>
@@ -82,8 +90,10 @@ export function MainNavBar() {
           </Sheet>
         </div>
 
-        <div className="flex w-full justify-end">
-          <LoginRegisterButton />
+        <div className="flex w-full gap-4 justify-end">
+          {!signedIn && <LoginRegisterButton />}
+          {signedIn && <SignOutButton />}
+          {signedIn && <UserProfileButton />}
         </div>
       </div>
     </nav>
