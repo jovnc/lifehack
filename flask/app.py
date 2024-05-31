@@ -19,7 +19,6 @@ def predict():
     # fllter only those available ingredients
     data = filter(lambda x: x['Ingredient'] in availableIngredients, data)
 
-    print(data)
 
     df = pd.DataFrame(data)
     df = df[['Month', 'Ingredient']]

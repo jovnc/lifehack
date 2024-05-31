@@ -24,7 +24,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     return { error: "User already exists" };
   }
 
-  await db.user.create({
+  const user = await db.user.create({
     data: {
       name,
       email,
@@ -32,9 +32,17 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     },
   });
 
-  const verificationToken = await generateVerificationToken(email);
+  // const verificationToken = await generateVerificationToken(email);
 
-  await sendVerificationEmail(verificationToken.email, verificationToken.token);
+  // await sendVerificationEmail(verificationToken.email, verificationToken.token);
+
+  // FOR DEVELOPMENT: Disable email verification
+  await db.user.update({
+    where: { id: user.id },
+    data: {
+      emailVerified: new Date(),
+    },
+  });
 
   return { success: "Please verify your email to create your account" };
 };
