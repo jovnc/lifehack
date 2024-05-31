@@ -27,8 +27,12 @@ export function ChatBotForm({
   const handleSubmit = (data: z.infer<typeof ChatBotFormSchema>) => {
     setHistory((prev) => [...prev, ["user", data.message]]);
     startTransition(async () => {
-      const res = await sendNormalPrompt(data.message);
-      console.log(res);
+      // const res = await sendNormalPrompt(data.message);
+
+      // timeout 1s
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      setHistory((prev) => [...prev, ["bot", "test"]]);
     });
     form.reset();
   };
