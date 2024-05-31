@@ -9,9 +9,12 @@ export default async function page() {
   const transactions = await getTransactionsWithProductAndIngredients();
 
   return (
-    <main className="w-full grid grid-cols-2 gap-4 min-h-screen text-wrap">
-      <DashboardCard transactions={transactions} ingredients={ingredients} />
-      <GraphTabs transactions={transactions} ingredients={ingredients} />
+    <main className="w-full  min-h-screen text-wrap">
+      <p className="pl-8 text-3xl font-bold">Dashboard</p>
+      <div className="w-full grid grid-cols-2 gap-4">
+        <DashboardCard transactions={transactions} ingredients={ingredients} />
+        <GraphTabs transactions={transactions} ingredients={ingredients} />
+      </div>
     </main>
   );
 }

@@ -12,7 +12,8 @@ export const predict = async (ingredients: string[]) => {
   if (!response.ok) {
     return {
       success: false,
-      message: "Failed to predict ingredients",
+      message:
+        "Failed to predict ingredients. Make sure Flask server is running.",
     };
   }
 

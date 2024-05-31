@@ -34,7 +34,7 @@ export function GraphTabs({
   ingredients: Ingredient[];
 }) {
   return (
-    <Tabs defaultValue="ingredients" className="w-full">
+    <Tabs defaultValue="ingredients" className="w-full mt-8">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="ingredients">Ingredients</TabsTrigger>
         <TabsTrigger value="transactions">Transactions</TabsTrigger>
