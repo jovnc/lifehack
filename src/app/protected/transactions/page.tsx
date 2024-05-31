@@ -2,6 +2,7 @@ import { getProducts } from "@/data/products";
 import { TransactionDataTable } from "./_components/TransactionDataTable";
 import { getTransactionsWithProducts } from "@/data/transactions";
 import { FaMoneyBill } from "react-icons/fa";
+import { getIngredients } from "@/data/ingredients";
 
 export type Product = {
   id: string;
@@ -14,6 +15,9 @@ export type Product = {
 export default async function page() {
   const products = await getProducts();
   const transactions = await getTransactionsWithProducts();
+  const ingredients = await getIngredients();
+
+  console.log(JSON.stringify(ingredients));
 
   return (
     <div className="w-full">

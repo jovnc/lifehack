@@ -7,7 +7,7 @@ export default async function page() {
   const ingredients = await getIngredients();
   const products = await getProductsWithIngredients();
 
-  console.log(products[0].ingredients);
+  console.log(products);
 
   return (
     <div className="w-full">

@@ -14,14 +14,17 @@ export const addIngredient = async (
 
   const { name, amount } = validatedFields.data;
 
-  const newIngredient = await db.ingredient.create({
-    data: {
-      name,
-      amount: parseInt(amount) * 1000,
-    },
-  });
-
-  return { success: "Ingredient added", newIngredient };
+  try {
+    const newIngredient = await db.ingredient.create({
+      data: {
+        name,
+        amount: parseInt(amount) * 1000,
+      },
+    });
+    return { success: "Ingredient added", newIngredient };
+  } catch (error) {
+    return { error: "Ingredient already exists" };
+  }
 };
 
 export const editIngredient = async (

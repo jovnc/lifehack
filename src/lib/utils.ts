@@ -42,6 +42,7 @@ export function groupTotalPriceByMonth(data: Transaction[]) {
     return {
       name: `${monthNames[monthIndex]} ${year}`,
       totalSales: groupedData[key],
+      predicted: false,
     };
   });
 

@@ -27,8 +27,8 @@ export function ChatBotForm({
   const handleSubmit = (data: z.infer<typeof ChatBotFormSchema>) => {
     setHistory((prev) => [...prev, ["user", data.message]]);
     startTransition(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setHistory((prev) => [...prev, ["bot", "test"]]);
+      const res = await sendNormalPrompt(data.message);
+      console.log(res);
     });
     form.reset();
   };
@@ -67,6 +67,7 @@ export function ChatBotForm({
 }
 
 import { Button } from "@/components/ui/button";
+import { sendNormalPrompt } from "@/actions/openai";
 
 function ArrowRightIcon(props: React.SVGProps<SVGSVGElement>) {
   return (

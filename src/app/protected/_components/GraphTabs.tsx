@@ -10,7 +10,19 @@ export type Transaction = {
   productQuantities: number[];
 };
 
-export function GraphTabs({ transactions }: { transactions: Transaction[] }) {
+export type Ingredient = {
+  id: string;
+  amount: number;
+  name: string;
+};
+
+export function GraphTabs({
+  transactions,
+  ingredients,
+}: {
+  transactions: Transaction[];
+  ingredients: Ingredient[];
+}) {
   return (
     <Tabs defaultValue="ingredients" className="w-full">
       <TabsList className="grid w-full grid-cols-2">
