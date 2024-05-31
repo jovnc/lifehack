@@ -1,6 +1,7 @@
 import { getProducts } from "@/data/products";
 import { TransactionDataTable } from "./_components/TransactionDataTable";
 import { getTransactionsWithProducts } from "@/data/transactions";
+import { FaMoneyBill } from "react-icons/fa";
 
 export type Product = {
   id: string;
@@ -17,7 +18,10 @@ export default async function page() {
   return (
     <div className="w-full">
       <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-        <p className="text-3xl font-bold">Transactions</p>
+        <p className="text-3xl font-bold flex flex-row gap-2">
+          <FaMoneyBill />
+          Transactions
+        </p>
         <TransactionDataTable products={products} transactions={transactions} />
       </main>
     </div>

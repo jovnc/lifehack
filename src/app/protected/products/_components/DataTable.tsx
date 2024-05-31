@@ -102,7 +102,7 @@ export const columns: ColumnDef<Product>[] = [
       return (
         <div className="px-1">
           {ingredients.map((ingredient, i) => (
-            <p>
+            <p key={ingredient.id}>
               {ingredientAmounts[i]}g {ingredient.name}
             </p>
           ))}

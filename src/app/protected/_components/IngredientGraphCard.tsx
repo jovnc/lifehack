@@ -9,9 +9,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
 
-export function GraphCard() {
+export function IngredientGraphCard() {
   const data = [
     { name: "Jan", uv: 400, pv: 2400, amt: 2400 },
     { name: "Feb", uv: 300, pv: 2210, amt: 2290 },
@@ -34,6 +41,7 @@ export function GraphCard() {
           <div className="flex justify-center items-center w-full">
             <div className="w-full h-96">
               <LineChart width={400} height={400} data={data}>
+                <Tooltip />
                 <Line type="monotone" dataKey="uv" stroke="#8884d8" />
                 <CartesianGrid stroke="#ccc" />
                 <XAxis dataKey="name" />

@@ -8,3 +8,8 @@ export const getTransactionsWithProducts = async () => {
   });
   return transactions;
 };
+
+export const getTransactions = async () => {
+  const transactions = await db.transaction.findMany();
+  return transactions;
+};

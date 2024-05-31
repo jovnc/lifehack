@@ -18,10 +18,22 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-export function DashboardCard() {
-  const [status, setStatus] = useState(false);
+type Ingredient = {
+  id: string;
+  name: string;
+  amount: number;
+};
+
+export function DashboardCard({ ingredients }: { ingredients: Ingredient[] }) {
   const [demand, setDemand] = useState(5);
+
+  // check if there are enough ingredients in stock
+  const status = ingredients.reduce((hasEnough, ingredient) => {
+    return hasEnough && ingredient.amount > 0;
+  }, true);
 
   return (
     <main className="w-full flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
@@ -46,9 +58,12 @@ export function DashboardCard() {
             >
               {status ? "Sufficient Supply" : "Insufficient Supply"}
             </div>
-            <button className="bg-gray-100 text-xs rounded-md">
-              <p className="p-1">View Inventory</p>
-            </button>
+
+            <Button size="sm" variant="secondary" className="mt-4">
+              <Link href="/protected/ingredients" className="text-xs">
+                View Inventory
+              </Link>
+            </Button>
           </CardContent>
         </Card>
         <Card
