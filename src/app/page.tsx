@@ -127,7 +127,7 @@ function WhyUseUsCard() {
           />
           <p className="font-bold">1. Manage Inventory</p>
           <p className="text-center text-gray-500 text-sm">
-            Accurate predictions helps you to schedule your next inventory
+            Accurate predictions help you to schedule your next inventory
             restock.
           </p>
         </div>
