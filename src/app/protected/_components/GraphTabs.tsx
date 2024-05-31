@@ -8,12 +8,22 @@ export type Transaction = {
   date: Date;
   productIds: string[];
   productQuantities: number[];
+  products: Product[];
 };
 
 export type Ingredient = {
   id: string;
   amount: number;
   name: string;
+};
+
+type Product = {
+  id: string;
+  name: string;
+  price: number;
+  ingredientIds: string[];
+  ingredientAmounts: number[];
+  ingredients: Ingredient[];
 };
 
 export function GraphTabs({
@@ -30,7 +40,10 @@ export function GraphTabs({
         <TabsTrigger value="transactions">Transactions</TabsTrigger>
       </TabsList>
       <TabsContent value="ingredients">
-        <IngredientGraphCard />
+        <IngredientGraphCard
+          transactions={transactions}
+          ingredients={ingredients}
+        />
       </TabsContent>
       <TabsContent value="transactions">
         <TransactionGraphCard transactions={transactions} />

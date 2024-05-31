@@ -9,7 +9,7 @@ export function ChatbotWrapper({ session }: { session: any }) {
   const username = session?.user?.name;
   const [history, setHistory] = useState<string[][]>([]);
   return (
-    <div className="flex flex-col w-full gap-6">
+    <div className="flex flex-col w-full gap-6 ">
       {history &&
         history.map(([type, message], index) => {
           if (type === "user") {

@@ -13,3 +13,16 @@ export const getTransactions = async () => {
   const transactions = await db.transaction.findMany();
   return transactions;
 };
+
+export const getTransactionsWithProductAndIngredients = async () => {
+  const transactions = await db.transaction.findMany({
+    include: {
+      products: {
+        include: {
+          ingredients: true,
+        },
+      },
+    },
+  });
+  return transactions;
+};
