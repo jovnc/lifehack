@@ -13,6 +13,14 @@ with open('model.pkl', 'rb') as f:
 @app.route('/api/predict', methods=['POST'])
 def predict():
     data = request.json
+
+    availableIngredients = ['Anchovy', 'Bacon', 'Beef', 'Carrot', 'Chicken', 'Egg', 'Green Onion', 'Green Peas', 'Ham', 'Olive', 'Onion', 'Rice', 'Soy Sauce']
+
+    # fllter only those available ingredients
+    data = filter(lambda x: x['Ingredient'] in availableIngredients, data)
+
+    print(data)
+
     df = pd.DataFrame(data)
     df = df[['Month', 'Ingredient']]
     prediction = model.predict(df)
