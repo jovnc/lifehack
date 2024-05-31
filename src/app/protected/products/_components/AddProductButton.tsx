@@ -12,12 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import AddProductForm from "./AddProductForm";
-
-type Ingredient = {
-  id: string;
-  name: string;
-  amount: string;
-};
+import { Ingredient } from "./DataTable";
 
 export function AddProductButton({
   ingredients,

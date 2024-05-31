@@ -30,7 +30,7 @@ export default function EditIngredientForm({
 }: {
   id: string;
   ingredientName: string;
-  amount: string;
+  amount: number;
 }) {
   const form = useForm<z.infer<typeof NewIngredientSchema>>({
     resolver: zodResolver(NewIngredientSchema),

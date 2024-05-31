@@ -13,12 +13,7 @@ import {
 import React from "react";
 import EditIngredientForm from "./EditIngredientForm";
 import { Button } from "@/components/ui/button";
-
-type Ingredient = {
-  id: string;
-  name: string;
-  amount: string;
-};
+import { Ingredient } from "../../products/_components/DataTable";
 
 export const EditIngredientButton = ({
   ingredient,

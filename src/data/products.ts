@@ -19,6 +19,9 @@ export const getProductByName = async (name: string) => {
     where: {
       name,
     },
+    include: {
+      ingredients: true,
+    },
   });
   return product;
 };

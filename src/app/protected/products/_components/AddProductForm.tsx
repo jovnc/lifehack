@@ -31,12 +31,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { addProduct } from "@/actions/product";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-
-type Ingredient = {
-  id: string;
-  name: string;
-  amount: string;
-};
+import { Ingredient } from "./DataTable";
 
 export default function AddProductForm({
   ingredients,

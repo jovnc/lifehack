@@ -93,7 +93,7 @@ model TwoFactorConfirmation {
 model Ingredient {
   id       String    @id @default(cuid())
   name     String    @unique
-  amount   String
+  amount   Int
   products Product[]
 }
 

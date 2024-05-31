@@ -38,10 +38,10 @@ import {
 import { AddProductButton } from "./AddProductButton";
 import { DeleteProductButton } from "./DeleteProductButton";
 
-type Ingredient = {
+export type Ingredient = {
   id: string;
   name: string;
-  amount: string;
+  amount: number;
 };
 
 export type Product = {

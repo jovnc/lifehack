@@ -39,12 +39,7 @@ import { AddIngredientButton } from "./AddIngredientButton";
 import { toast } from "sonner";
 import { EditIngredientButton } from "./EditIngredientButton";
 import { DeleteIngredientButton } from "./DeleteIngredientButton";
-
-type Ingredient = {
-  id: string;
-  name: string;
-  amount: string;
-};
+import { Ingredient } from "../../products/_components/DataTable";
 
 export const columns: ColumnDef<Ingredient>[] = [
   {

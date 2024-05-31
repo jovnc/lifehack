@@ -17,7 +17,7 @@ export const addIngredient = async (
   const newIngredient = await db.ingredient.create({
     data: {
       name,
-      amount,
+      amount: parseInt(amount),
     },
   });
 
@@ -41,7 +41,7 @@ export const editIngredient = async (
     },
     data: {
       name,
-      amount,
+      amount: parseInt(amount),
     },
   });
 
@@ -60,4 +60,21 @@ export const deleteIngredient = async (id: string) => {
   }
 
   return { success: "Ingredient deleted" };
+};
+
+export const decreaseIngredientAmount = async (id: string, amount: number) => {
+  const res = await db.ingredient.update({
+    where: {
+      id,
+    },
+    data: {
+      amount: {
+        decrement: amount,
+      },
+    },
+  });
+  if (!res) {
+    return { error: "Failed to decrease ingredient amount" };
+  }
+  return { success: "Ingredient amount decreased" };
 };

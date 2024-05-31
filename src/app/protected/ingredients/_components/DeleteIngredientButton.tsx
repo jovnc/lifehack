@@ -17,12 +17,7 @@ import { toast } from "sonner";
 import db from "@/db/db";
 import { deleteIngredient } from "@/actions/ingredients";
 import { useRouter } from "next/navigation";
-
-type Ingredient = {
-  id: string;
-  name: string;
-  amount: string;
-};
+import { Ingredient } from "../../products/_components/DataTable";
 
 export const DeleteIngredientButton = ({
   ingredient,
