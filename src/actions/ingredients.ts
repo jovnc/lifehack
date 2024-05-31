@@ -17,7 +17,7 @@ export const addIngredient = async (
   const newIngredient = await db.ingredient.create({
     data: {
       name,
-      amount: parseInt(amount),
+      amount: parseInt(amount) * 1000,
     },
   });
 
@@ -41,7 +41,7 @@ export const editIngredient = async (
     },
     data: {
       name,
-      amount: parseInt(amount),
+      amount: parseInt(amount) * 1000,
     },
   });
 

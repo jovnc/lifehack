@@ -4,6 +4,7 @@ import { getProductByName } from "@/data/products";
 import db from "@/db/db";
 import { NewTransactionSchema } from "@/schemas";
 import { z } from "zod";
+import { decreaseIngredientAmount } from "./ingredients";
 
 export const addTransaction = async (
   values: z.infer<typeof NewTransactionSchema>
@@ -33,29 +34,31 @@ export const addTransaction = async (
     })
   );
 
-  // const transaction = await db.transaction.create({
-  //   data: {
-  //     productIds: updatedProducts.map((product) => product.id ?? ""),
-  //     totalPrice: totalPrice,
-  //     productQuantities: updatedProducts.map((product) => product.amount ?? 0),
-  //     products: {
-  //       connect: updatedProducts.map((product) => ({
-  //         id: product.id,
-  //       })),
-  //     },
-  //   },
-  // });
+  const transaction = await db.transaction.create({
+    data: {
+      productIds: updatedProducts.map((product) => product.id ?? ""),
+      totalPrice: totalPrice,
+      productQuantities: updatedProducts.map((product) => product.amount ?? 0),
+      products: {
+        connect: updatedProducts.map((product) => ({
+          id: product.id,
+        })),
+      },
+    },
+  });
 
-  // if (!transaction) {
-  //   return { error: "Transaction not created" };
-  // }
+  if (!transaction) {
+    return { error: "Transaction not created" };
+  }
 
   // decrease the ingredient amount inside inventory
   for (const product of updatedProducts) {
     if (product.ingredients) {
       for (let index = 0; index < product.ingredients.length; index++) {
         const ingredient = product.ingredients[index];
-        const amount = product.ingredientAmount[index] * product.amount;
+        const amount = product.ingredientAmount[index] * product.amount / 100;
+
+        await decreaseIngredientAmount(ingredient.id, amount);
       }
     }
   }

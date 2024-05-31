@@ -114,9 +114,11 @@ export const columns: ColumnDef<Ingredient>[] = [
       </Button>
     ),
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
+      const amount = row.getValue("amount") as number;
 
-      return <div className="pl-5 font-medium">{amount}</div>;
+      const formatted = (amount / 1000).toFixed(3) + " kg";
+
+      return <div className="pl-5 font-medium">{formatted}</div>;
     },
   },
 

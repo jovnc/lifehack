@@ -36,7 +36,7 @@ export default function EditIngredientForm({
     resolver: zodResolver(NewIngredientSchema),
     defaultValues: {
       name: ingredientName,
-      amount: amount.toString(),
+      amount: (amount / 1000).toString(),
     },
   });
   const [isPending, startTransition] = React.useTransition();

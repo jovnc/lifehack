@@ -110,10 +110,13 @@ export const columns: ColumnDef<Transaction>[] = [
     header: "Products",
     cell: ({ row }) => {
       const products = row.getValue("products") as Product[];
+      const original = row.original as Transaction;
       return (
         <div className="px-1">
           {products.map((product, i) => (
-            <p key={product.id}>{product.name}</p>
+            <p key={product.id}>
+              {original.productQuantities[i]} x {product.name}
+            </p>
           ))}
         </div>
       );
