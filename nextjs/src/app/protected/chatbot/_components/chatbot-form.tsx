@@ -13,8 +13,16 @@ const ChatBotFormSchema = z.object({
 
 export function ChatBotForm({
   setHistory,
+  disabledOn,
+  apiKey,
+  setApiKey,
+  stringJSON,
 }: {
   setHistory: React.Dispatch<React.SetStateAction<string[][]>>;
+  disabledOn?: boolean;
+  apiKey: string;
+  setApiKey: React.Dispatch<React.SetStateAction<string>>;
+  stringJSON: string;
 }) {
   const [isPending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof ChatBotFormSchema>>({
@@ -27,12 +35,18 @@ export function ChatBotForm({
   const handleSubmit = (data: z.infer<typeof ChatBotFormSchema>) => {
     setHistory((prev) => [...prev, ["user", data.message]]);
     startTransition(async () => {
-      // const res = await sendNormalPrompt(data.message);
+      const res = await sendNormalPrompt(data.message, apiKey, stringJSON);
 
+      if (res?.error) {
+        toast.error("Make sure OpenAI API Key is correct and valid.");
+        setApiKey("");
+        setHistory([]);
+      } else {
+        const message = res?.response?.choices[0]?.message?.content;
+        setHistory((prev) => [...prev, ["bot", message || ""]]);
+      }
       // timeout 1s
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      setHistory((prev) => [...prev, ["bot", "test"]]);
+      // await new Promise((resolve) => setTimeout(resolve, 1000));
     });
     form.reset();
   };
@@ -43,11 +57,11 @@ export function ChatBotForm({
         <FormField
           control={form.control}
           name="message"
-          render={({ field }) => (
+          render={({ field }: { field: any }) => (
             <div className="relative w-full">
               <Input
                 className="pr-10"
-                disabled={isPending}
+                disabled={isPending || disabledOn}
                 placeholder="Enter your message"
                 type="text"
                 {...field}
@@ -56,7 +70,7 @@ export function ChatBotForm({
                 className="absolute top-1/2 right-2 -translate-y-1/2"
                 size="icon"
                 type="submit"
-                disabled={isPending}
+                disabled={isPending || disabledOn}
                 variant="ghost"
               >
                 <ArrowRightIcon className="h-5 w-5" />
@@ -72,6 +86,7 @@ export function ChatBotForm({
 
 import { Button } from "@/components/ui/button";
 import { sendNormalPrompt } from "@/actions/openai";
+import { toast } from "sonner";
 
 function ArrowRightIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
