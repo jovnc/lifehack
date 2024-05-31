@@ -95,7 +95,11 @@ export const columns: ColumnDef<Ingredient>[] = [
     cell: ({ row }) => (
       <div className="capitalize w-1/2">
         <p
-          className={"border border-black rounded-lg text-center font-semibold"}
+          className={`border  rounded-lg text-center font-semibold ${
+            parseInt(row.getValue("amount")) > 0
+              ? "text-green-500 border-green-500"
+              : "text-red-500 border-red-500"
+          }`}
         >
           {parseInt(row.getValue("amount")) > 0 ? "Available" : "Unavailable"}
         </p>

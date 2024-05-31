@@ -10,7 +10,7 @@ export default async function page() {
 
   return (
     <main className="w-full grid grid-cols-2 gap-4 min-h-screen text-wrap">
-      <DashboardCard ingredients={ingredients} />
+      <DashboardCard transactions={transactions} ingredients={ingredients} />
       <GraphTabs transactions={transactions} ingredients={ingredients} />
     </main>
   );

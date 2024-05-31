@@ -76,22 +76,24 @@ export function IngredientGraphCard({
         <CardContent>
           <div className="flex justify-center items-center w-full">
             <div className="w-full h-96">
-              <LineChart data={finalData} width={400} height={300}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                {ingredientList.map((ingredient, i) => (
-                  <Line
-                    key={i}
-                    type="monotone"
-                    dataKey={ingredient}
-                    stroke={COLORS[i]}
-                    activeDot={{ r: 8 }}
-                  />
-                ))}
-              </LineChart>
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={finalData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  {ingredientList.map((ingredient, i) => (
+                    <Line
+                      key={i}
+                      type="monotone"
+                      dataKey={ingredient}
+                      stroke={COLORS[i]}
+                      activeDot={{ r: 8 }}
+                    />
+                  ))}
+                </LineChart>
+              </ResponsiveContainer>
             </div>
           </div>
         </CardContent>
