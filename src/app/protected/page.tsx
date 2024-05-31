@@ -27,13 +27,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { DashboardCard, GraphCard } from "./_components/DashboardCard";
 
 export default async function page() {
   const session = await auth();
   return (
-    <main className="w-full flex min-h-screen text-wrap">
-      TODO
-      {/* <DashboardCard /> */}
+    <main className="w-full flex flex-col min-h-screen text-wrap">
+      <DashboardCard />
+      <GraphCard />
     </main>
   );
 }
