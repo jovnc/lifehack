@@ -19,3 +19,28 @@ export const ResetSchema = z.object({
 export const NewPasswordSchema = z.object({
   password: z.string().min(6, { message: "Minimum 6 characters required" }),
 });
+
+export const NewIngredientSchema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  amount: z.string().min(1, { message: "Amount is required" }),
+});
+
+export const NewProductSchema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  price: z.string().min(1, { message: "Cost is required" }),
+  ingredients: z.array(
+    z.object({
+      name: z.string().min(1, { message: "Name is required" }),
+      amount: z.number().min(1, { message: "Amount is required" }),
+    })
+  ),
+});
+
+export const NewTransactionSchema = z.object({
+  products: z.array(
+    z.object({
+      name: z.string().min(1, { message: "Name is required" }),
+      amount: z.number().min(1, { message: "Amount is required" }),
+    })
+  ),
+});

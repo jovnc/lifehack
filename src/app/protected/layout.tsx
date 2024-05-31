@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
 import { MainNavBar } from "@/components/ui/nav/main-nav-bar";
+import { Toaster } from "@/components/ui/sonner";
 import React from "react";
 
 export default async function page({
@@ -14,6 +15,7 @@ export default async function page({
       <div className="w-full flex items-center justify-center p-14">
         {children}
       </div>
+      <Toaster />
     </main>
   );
 }

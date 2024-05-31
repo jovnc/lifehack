@@ -43,6 +43,11 @@ export function MainNavBar({ signedIn }: { signedIn: boolean }) {
               </Link>
             )}
             {signedIn && (
+              <Link href="/protected/transactions" className={linkInactive}>
+                Transactions
+              </Link>
+            )}
+            {signedIn && (
               <Link href="/protected/chatbot" className={linkInactive}>
                 Chatbot
               </Link>
