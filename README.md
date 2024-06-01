@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This project is a submission to LifeHack 2024 under the theme: Food Security.
+
+For more information about the project. please refer to the ["https://devpost.com/software/supplysmart-by-75-nus"](Devpost).
 
 ## Getting Started
 
-First, run the development server:
+This project uses Python Flask (>3.7 and < 3.11) and Next.JS (14.2.1).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Setting up the project
+
+git clone the project into your personal workspace
+
+```
+git clone https://github.com/jovnc/lifehack.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Flask Application
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Make sure that you change to the Flask directory (`cd flask`) and you are always working on the Flask directory in the terminal.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Create python virtual environment (make sure Python version >3.7 and < 3.11)
 
-## Learn More
+2. Activate the python virtual environment
 
-To learn more about Next.js, take a look at the following resources:
+3. Install the pip dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+pip install -r requirements.txt
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. Run the Flask application on port 5000
 
-## Deploy on Vercel
+```
+flask run
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Next.JS application
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Make sure that you change to the NextJS directory (`cd nextjs`) and you are always working on the NextJS directory in the terminal.
+
+1. Inside the .env file, setup the environment variables, you will need your own API keys for this. The database needs to be a postgres database (can either be hosted or locally)
+
+```
+NEXT_PUBLIC_BASE_URL="http://localhost:3000"
+AUTH_SECRET="I1QoPkdPjSeRIy4F//U63BErsQ8WlAKQZC8twCOOCZo="
+
+GITHUB_ID=""
+GITHUB_SECRET=""
+
+GOOGLE_ID=""
+GOOGLE_SECRET=""
+
+RESEND_API_KEY=""
+
+
+DATABASE_URL=""
+```
+
+2. Install node dependencies
+
+```
+npm install
+```
+
+3. Setup prisma client and database (for first time connection)
+
+```
+npx prisma db push
+npx prisma generate
+```
+
+4. Run the development server on port 3000
+
+```
+npm run dev
+```

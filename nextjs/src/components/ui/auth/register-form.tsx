@@ -61,7 +61,7 @@ export const RegisterForm = () => {
 
   return (
     <CardWrapper
-      headerLabel="Create an account"
+      headerLabel="Create an account. NOTE: Email verification is disabled on production environment"
       backButtonHref="/auth/login"
       backButtonLabel="Already have an account?"
       showSocial
