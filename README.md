@@ -1,6 +1,6 @@
 This project is a submission to LifeHack 2024 under the theme: Food Security.
 
-For more information about the project. please refer to the ["https://devpost.com/software/supplysmart-by-75-nus"](Devpost).
+For more information about the project. please refer to the [Devpost](https://devpost.com/software/supplysmart-by-75-nus).
 
 ## Getting Started
 
