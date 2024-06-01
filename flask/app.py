@@ -10,6 +10,11 @@ app = Flask(__name__)
 with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
 
+
+@app.route('/')
+def index():
+    return 'Hello, World!'
+
 @app.route('/api/predict', methods=['POST'])
 def predict():
     data = request.json
@@ -33,4 +38,4 @@ def predict():
     return prediction_df.to_json(orient='records')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=5000)
