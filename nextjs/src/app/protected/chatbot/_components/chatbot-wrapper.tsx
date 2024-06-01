@@ -27,12 +27,12 @@ export function ChatbotWrapper({
         history.map(([type, message], index) => {
           if (type === "user") {
             return (
-              <YourQuery avatar={userAvatarUrl} username={username}>
+              <YourQuery key={index} avatar={userAvatarUrl} username={username}>
                 {message}
               </YourQuery>
             );
           }
-          return <ChatBotReply>{message}</ChatBotReply>;
+          return <ChatBotReply key={index}>{message}</ChatBotReply>;
         })}
       <ChatBotForm
         disabledOn={apiKey == ""}

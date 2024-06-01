@@ -26,7 +26,9 @@ export default async function page() {
       <div className="flex flex-col w-full gap-8">
         <div className="flex flex-col gap-2">
           <p className="text-3xl font-bold">Gain Business Insights</p>
-          <p className="text-gray-500 text-xl">Based on your store's data</p>
+          <p className="text-gray-500 text-xl">
+            Based on your store&apos;s data
+          </p>
         </div>
         <Card className="h-3/4 flex items-end overflow-y-auto">
           <div className="flex flex-col  w-full p-6 gap-8">

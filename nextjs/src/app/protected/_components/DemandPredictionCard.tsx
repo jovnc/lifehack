@@ -49,8 +49,8 @@ export default function DemandPredictionCard({ data }: { data: any }) {
 
                 <TableCell className="text-right">250</TableCell>
               </TableRow>
-              {data.map((item: any) => (
-                <TableRow>
+              {data.map((item: any, i: number) => (
+                <TableRow key={i}>
                   <TableCell>
                     <div className="font-medium">{item.Ingredient}</div>
                   </TableCell>

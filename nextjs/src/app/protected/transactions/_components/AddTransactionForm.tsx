@@ -173,7 +173,10 @@ function ProductsSelectorInput({
           </div>
         )}
         {currentProducts.map((product) => (
-          <div className="w-full flex flex-row justify-between">
+          <div
+            key={product.name}
+            className="w-full flex flex-row justify-between"
+          >
             <p>{product.name}</p>
             <p>{product.amount}</p>
           </div>

@@ -38,11 +38,13 @@ export default function TestButton({ ingredients }: any) {
         <CardContent className="pl-0">
           <p className="text-sm">
             Using machine learning algorithms, we are able to predict the next
-            month's ingredients so that you can prepare sufficient ingredients
-            to meet next month's demand!
+            month&apos;s ingredients so that you can prepare sufficient
+            ingredients to meet next month&apos;s demand!
           </p>
         </CardContent>
-        <Button onClick={handleClick}>Predict Next Month's Ingredients</Button>
+        <Button onClick={handleClick}>
+          Predict Next Month&apos;s Ingredients
+        </Button>
       </Card>
     );
 

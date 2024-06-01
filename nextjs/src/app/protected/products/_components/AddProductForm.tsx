@@ -222,7 +222,10 @@ function IngredientsSelectorInput({
           </div>
         )}
         {currentIngredients.map((ingredient) => (
-          <div className="w-full flex flex-row justify-between">
+          <div
+            key={ingredient.name}
+            className="w-full flex flex-row justify-between"
+          >
             <p>{ingredient.name}</p>
             <p>{ingredient.amount}</p>
           </div>

@@ -142,7 +142,7 @@ function WhyUseUsCard() {
           />
           <p className="font-bold ">2. Reduce Waste</p>
           <p className="text-center text-gray-500 text-sm">
-            Predict your store's demand based on previous sales.
+            Predict your store&apos;s demand based on previous sales.
           </p>
         </div>
         <div className="flex w-full flex-col gap-4 items-center ">
