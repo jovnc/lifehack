@@ -67,39 +67,41 @@ export function MainNavBar({ signedIn }: { signedIn: boolean }) {
             <SheetContent side="left">
               <nav className="grid gap-6 text-lg font-medium">
                 <Link
-                  href="#"
-                  className="flex items-center gap-2 text-lg font-semibold"
+                  href="/"
+                  className="flex items-center gap-2 text-lg font-semibold md:text-base"
                 >
                   <Package2 className="h-6 w-6" />
-                  <span className="sr-only">Acme Inc</span>
+                  <span className="sr-only">Lifehack 2024</span>
+                </Link>
+                <Link href="/" className={linkActive}>
+                  Home
                 </Link>
                 <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-foreground"
+                  href="/protected"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
                 >
                   Dashboard
                 </Link>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Orders
-                </Link>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Products
-                </Link>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Customers
-                </Link>
-                <Link href="#" className="hover:text-foreground">
-                  Settings
-                </Link>
+                {signedIn && (
+                  <Link href="/protected/products" className={linkInactive}>
+                    Products
+                  </Link>
+                )}
+                {signedIn && (
+                  <Link href="/protected/ingredients" className={linkInactive}>
+                    Ingredients
+                  </Link>
+                )}
+                {signedIn && (
+                  <Link href="/protected/transactions" className={linkInactive}>
+                    Transactions
+                  </Link>
+                )}
+                {signedIn && (
+                  <Link href="/protected/chatbot" className={linkInactive}>
+                    Chatbot
+                  </Link>
+                )}
               </nav>
             </SheetContent>
           </Sheet>
