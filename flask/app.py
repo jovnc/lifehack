@@ -38,4 +38,4 @@ def predict():
     return prediction_df.to_json(orient='records')
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(port=5000)
